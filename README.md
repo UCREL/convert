@@ -3,12 +3,16 @@
 A C program written by Paul Rayson to convert between many of the 
 different file formats in the UCREL NLP pipeline.
 
-# Licence
+## Licence
 
 This software is licenced under GPL version 3. It is available publicly for academic 
 use but not commercially.
 
-# Running instructions
+## Compilation
+
+`cd` into the `src` folder and run `make`
+
+## Running instructions
 
 Run the software without any command line flags to see the different options:
 
@@ -16,7 +20,7 @@ Run the software without any command line flags to see the different options:
 ./convert
 ```
 
-To convert from CLAWS vertical output format to word_TAG horizontal format:
+For example, to convert from CLAWS vertical output format to word_TAG horizontal format:
 
 ```
 ./convert -v2hsupp taggedfile.c7 taggedfile_horiz.c7 taggedfile.c7.supp
