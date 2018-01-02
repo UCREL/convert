@@ -31,3 +31,17 @@ where `taggedfile.c7` is the vertical output format from CLAWS
 `taggedfile_horiz.c7` is the horizontal word_TAG format 
 (output from `convert`),
 and `taggedfile.c7.supp` is the supplementary output file from CLAWS.
+
+The C7 to C5 tagset mapping file (in the `resources` folder) can be used independently 
+or in combination with the format change, for example, to map vertical C7 output to the C5 tagset, 
+but retain the vertical format:
+
+```
+./convert -v2vmap taggedfile.c7 taggedfile.c5 mapC7toC5.txt
+```
+
+Or, to map vertical C7 CLAWS output to horizontal C5 format:
+
+```
+./convert -v2hsuppmap taggedfile.c7 taggedfile_horiz.c5 taggedfile.c7.supp mapC7toC5.txt
+```
