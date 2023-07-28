@@ -115,7 +115,8 @@ char	tempsupp[100000];
         }
     for (x = 0; x <= length; x++)
         {
-        if (strcmp(SBREAKTAG, buffer[x].syntag) == 0)
+        /* check both POS and word fields in case POS has been mapped */
+        if ((strcmp(SBREAKTAG, buffer[x].syntag) == 0) || (strcmp(SBREAKTAG, buffer[x].word) == 0))
             {
             if (show_sent_num)
                 {
@@ -126,7 +127,7 @@ char	tempsupp[100000];
             continue;
             }
         /* check for supp file references */
-        if (is_supp_ref(buffer[x].word) && vert_horz_supp)
+        if (is_supp_ref(buffer[x].word) && (vert_horz_supp || vert_horz_supp_map))
             {
             get_string_from_supp(buffer[x].word, tempsupp);
             if (fletter)
@@ -158,14 +159,14 @@ char	tempsupp[100000];
 
         if (fletter)
             {
-            if (is_supp_ref(buffer[x].word) && vert_horz_supp)
+            if (is_supp_ref(buffer[x].word) && (vert_horz_supp || vert_horz_supp_map))
                 fprintf(fp, "%s_%c", tempsupp, buffer[x].syntag[0]);
             else
                 fprintf(fp, "%s_%c", buffer[x].word, buffer[x].syntag[0]);
             }
         else
             {
-            if (!(is_supp_ref(buffer[x].word) && vert_horz_supp))
+            if (!(is_supp_ref(buffer[x].word) && (vert_horz_supp || vert_horz_supp_map)))
                 strcpy(tempsupp, buffer[x].word);
 
             if (!strcmp(buffer[x].syntag, "NULL") && no_sos)

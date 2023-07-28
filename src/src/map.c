@@ -137,7 +137,9 @@ int     cur, mapos;
         }
     /* mark end of sentence differently */
     if (length != 0 && !semantic_xml_map && !vert_xml_map)
-	strcpy(buffer[length-1].syntag, "SENT");
+        {
+/*    	strcpy(buffer[length-1].syntag, "SENT");        */
+        }
 
 }	/* end of map tags */
 
